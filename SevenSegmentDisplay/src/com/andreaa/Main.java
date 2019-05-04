@@ -133,7 +133,7 @@ public class Main extends JPanel{
     }
 
     /** The main method generate the JFrame and runs endlessly the counter
-     *  In this case we've an UP counter which starts from 0 and when its reaches 15(F in the EX codification) comes down to 0, and restarts again endlessly
+     *  In this case we've an DOWN counter which starts from 15(F in EX codification) and when its reaches 0 goes up to 15, and restarts again endlessly
      **/
     public static void main(String[] args)throws InterruptedException{
         int[] exNums = {0x7E, 0x30, 0x6D, 0x79, 0x33, 0x5B, 0x5F, 0x70, 0x7F, 0x7B, 0x77, 0x1F, 0x4E, 0x3D, 0x4F, 0x47};
@@ -142,16 +142,16 @@ public class Main extends JPanel{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setBackground(Color.black);
         f.setSize(700,722);
-        int k = 0;
+        int k = 15;
         Main panel;
         while(1==1){
             panel = new Main();
             panel.bin = printNumbers(exNums, k);
             f.add(panel);
             f.setVisible(true);
-            k++;
-            if(k == 16)
-                k=0;
+            k--;
+            if(k == -1)
+                k=15;
             TimeUnit.SECONDS.sleep(1);
         }
 
